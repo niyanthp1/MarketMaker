@@ -260,7 +260,8 @@ class AvellanedaMarketMaker:
                        (2 / dynamic_gamma) * math.log(1 + (dynamic_gamma / self.k)))
         position_ratio = abs(inventory) / self.max_position
         spread_adjustment = 1 - (position_ratio ** 2)
-        return max(base_spread * spread_adjustment * 0.01, self.min_spread)
+        # Changed to 0.02 from 0.01
+        return max(base_spread * spread_adjustment * 0.02, self.min_spread)
 
     def calculate_dynamic_gamma(self, inventory: int) -> float:
         position_ratio = inventory / self.max_position
